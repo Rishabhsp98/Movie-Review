@@ -9,7 +9,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 @Getter
 @Setter
@@ -17,19 +16,20 @@ import java.util.Locale;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class movie implements Serializable {
+@Table(name="movie_table")
+@ToString
+public class Movie implements Serializable {
 
     @Id
-    @Column(name = "id",nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
     private String title;
 
     @Enumerated(EnumType.STRING)
     private genre genre;
 
-    private Double rating;
+    private Double rating; // single entity , average rating of all reviews
 
     @Temporal(TemporalType.DATE)
     @Column(name = "releaseDate")
@@ -37,7 +37,7 @@ public class movie implements Serializable {
     private Date releaseDate;
 
     @OneToMany(mappedBy = "movie")
-    private List<review> reviews;
+    private List<Review> reviews;
 
     public movieResponse toMovieResponse(){
         return movieResponse.builder()
