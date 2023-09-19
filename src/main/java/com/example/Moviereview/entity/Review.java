@@ -41,12 +41,8 @@ public class Review implements Serializable {
    @UpdateTimestamp
    private Date updatedOn;
 
-   public ReviewResponse toreviewResponse(){
-       return ReviewResponse.builder()
-               .movieTitle(this.movieTitle)
-               .rating(this.rating)
-               .review(this.movieReview)
-               .build();
+   public static ReviewResponse toReviewResponse(Review review){
+      return ReviewResponse.builder().review(review.movieReview).rating(review.rating).build();
    }
 
 }

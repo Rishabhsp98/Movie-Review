@@ -1,6 +1,6 @@
 package com.example.Moviereview.entity;
 
-public enum genre {
+public enum Genre {
 
     ACTION,
     HORROR,

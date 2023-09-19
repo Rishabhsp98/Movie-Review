@@ -7,6 +7,7 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class Movie implements Serializable {
     private String title;
 
     @Enumerated(EnumType.STRING)
-    private genre genre;
+    private Genre genre;
 
     private Double rating; // single entity , average rating of all reviews
 
@@ -39,13 +40,8 @@ public class Movie implements Serializable {
     @OneToMany(mappedBy = "movie")
     private List<Review> reviews;
 
-    public movieResponse toMovieResponse(){
-        return movieResponse.builder()
-                .genre(genre)
-                .title(this.title)
-                .rating(this.rating)
-                .releaseDate(String.valueOf(this.releaseDate))
-                .build();
+    public  movieResponse toMovieResponse(){
+        return movieResponse.builder().genre(this.genre).title(this.title).rating(this.rating).reviews(Collections.singletonList(Review.toReviewResponse((Review) this.reviews))).build();
     }
 
 }

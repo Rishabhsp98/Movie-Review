@@ -1,6 +1,6 @@
 package com.example.Moviereview.dtos.response;
 
-import com.example.Moviereview.entity.genre;
+import com.example.Moviereview.entity.Genre;
 import lombok.*;
 
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
 public class movieResponse {
 
     private String title;
-    private genre genre;
+    private Genre genre;
     private Double rating;
     private String releaseDate;
     private List<ReviewResponse> reviews;
