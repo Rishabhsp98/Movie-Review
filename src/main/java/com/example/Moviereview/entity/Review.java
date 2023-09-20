@@ -8,7 +8,11 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 
 @Getter
@@ -43,6 +47,13 @@ public class Review implements Serializable {
 
    public static ReviewResponse toReviewResponse(Review review){
       return ReviewResponse.builder().review(review.movieReview).rating(review.rating).build();
+   }
+
+   public static List<ReviewResponse> toReviewResponse(List<Review> reviewList){
+      if(Objects.isNull(reviewList))
+         return new ArrayList<>();
+      else
+         return reviewList.stream().map(Review::toReviewResponse).collect(Collectors.toList());
    }
 
 }

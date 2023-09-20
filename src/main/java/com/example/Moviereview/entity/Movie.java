@@ -41,7 +41,7 @@ public class Movie implements Serializable {
     private List<Review> reviews;
 
     public  movieResponse toMovieResponse(){
-        return movieResponse.builder().genre(this.genre).title(this.title).rating(this.rating).reviews(Collections.singletonList(Review.toReviewResponse((Review) this.reviews))).build();
+        return movieResponse.builder().genre(this.genre).title(this.title).rating(this.rating).reviews(Review.toReviewResponse(this.reviews)).build();
     }
 
 }
