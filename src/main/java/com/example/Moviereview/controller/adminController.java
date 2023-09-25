@@ -18,7 +18,7 @@ public class adminController {
     AdminService adminService;
 
 
-    @PostMapping("/addMovie")
+    @PostMapping("/movie/add")
     public ResponseEntity<movieResponse> addMovie(@RequestBody movieRequestDTO movieRequestDTO){
         return new ResponseEntity<>(adminService.addMovie(movieRequestDTO.toMovieEntity()).toMovieResponse(), HttpStatus.CREATED);
     }

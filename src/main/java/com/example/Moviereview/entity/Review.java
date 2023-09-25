@@ -46,7 +46,7 @@ public class Review implements Serializable {
    private Date updatedOn;
 
    public static ReviewResponse toReviewResponse(Review review){
-      return ReviewResponse.builder().review(review.movieReview).rating(review.rating).build();
+      return ReviewResponse.builder().review(review.movieReview).rating(review.rating).movieTitle(review.movieTitle).build();
    }
 
    public static List<ReviewResponse> toReviewResponse(List<Review> reviewList){
