@@ -23,10 +23,4 @@ public class adminController {
         return adminService.addMovie(movieRequestDTO.toMovieEntity());
     }
 
-    @GetMapping("/sample")
-    public String sampleAPi(){
-        return "Hello World";
-    }
-
-
 }
